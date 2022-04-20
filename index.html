@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>Document</title>
+    <style>
+        :root {
+            --backgroundColor: #F5F5F9;
+            --cartBackgroundColor: #FFFFFF;
+            --textactiveLi: #696CFF;
+            --textBgColorTextActive: #E7E7FF;
+            --colorH1: #566A7F;
+            --hoverLi: #F8F8F9;
+            --textheadermenu: #a1acb8;
+            --colorplaceholder:#B6BFC8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Public Sans;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--backgroundColor);
+        }
+
+        .menubar {
+            width: 261px;
+            background-color: var(--cartBackgroundColor);
+            position: relative;
+        }
+
+        h1 {
+            margin-left: 64px;
+            color: var(--colorH1);
+            font-size: 1.75rem;
+            padding: 20px 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .active {
+            height: 42px;
+            width: 228px;
+
+            margin-left: 16px;
+
+            color: var(--textactiveLi);
+
+            display: flex;
+            align-items: center;
+            font-size: .9375rem;
+            border-radius: 5px;
+            line-height: 1rem;
+            cursor: pointer;
+            background-color: var(--textBgColorTextActive);
+            margin-bottom: 0.2rem;
+        }
+
+        .active:hover {
+            background-color: var(--textBgColorTextActive);
+        }
+
+        li {
+            cursor: pointer;
+            margin-bottom: 0.2rem;
+            height: 42px;
+            width: 228px;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            border-radius: 5px;
+            color: var(--colorH1);
+            margin-left: 16px;
+            font-weight: 600;
+            line-height: 1.53;
+        }
+
+        li:hover {
+            background-color: var(--hoverLi);
+        }
+
+        .spaceicon {
+            margin: 0 1rem;
+        }
+
+        .headermenu {
+            color: var(--textheadermenu);
+            font-size: 85%;
+        }
+
+        .headermenu::before {
+            content: "";
+            width: 20px;
+            height: 1px;
+            margin-left: -17px;
+            margin-right: 10px;
+            background-color: var(--textheadermenu);
+        }
+
+        .hiden {
+            display: none;
+            transition: all 2s;
+        }
+
+        .ss {
+            color: red;
+            list-style-type: circle;
+            margin-left: 100px;
+        }
+        .containear{
+            display: flex;
+        }
+        .main {
+            width: 80%;
+            display: flex;
+            margin-left:2%;
+        }
+
+        header {
+           width:99%;
+            height:7.1%;
+            margin-top:2%;
+            box-shadow:0px 0px 10px rgba(0, 0, 0, 0.075);
+            border-radius: 8px;
+            background-color:var(--cartBackgroundColor);
+            display: flex;
+            align-items: center;
+        }
+        ::placeholder{
+            color:var(--colorplaceholder);
+            font-size:1rem;
+        }
+        label{
+            font-size:1.2rem;
+            color:var(--colorH1);
+            font-weight:bold;
+            margin-left:1.7rem;
+            margin-right:1rem;
+        }
+        input{
+            border:unset;
+            transition: all 0.3s;
+        }
+        input:focus{
+            outline:none;
+            border:unset;
+            margin-left:1rem;
+        }
+        .search{
+            display:flex;
+            width:30%;
+        }
+        .listmenu{
+            margin-left:1rem;
+            background-color:unset;
+            cursor: pointer;
+            display: none;
+            border:none;
+            font-size:1.5rem;
+        }
+        .profile{
+            width:80%;
+            display:flex;
+            justify-content:end;
+            position: relative;
+        }
+        .star{
+            text-decoration:none;
+            color: var(--colorH1);
+            font-weight: bold;
+            border:1px solid var(--colorplaceholder);
+            border-radius:3px 0 0 3px;
+            width:70px;
+            text-align:center;
+            padding:5px 10px  0.5% 0.5rem;
+            background-color:var(--hoverLi);
+            font-size:0.8rem;
+            position: absolute;
+            top:-15px;
+            margin-right:100px;
+        }
+        .iconstar{
+            font-size:1rem;
+            margin-right:0.2rem;
+        }
+        .numberstar{
+            margin-right:20px;
+            padding:0.5% 0.5rem  0.5% 0.5rem;
+            font-weight: bold;
+            border:1px solid var(--colorplaceholder);
+            border-radius:0 3px 3px 0;
+            text-decoration: none;
+            font-size:0.7rem;
+            text-align: center;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containear">
+        <div class="menubar">
+            <h1>sneat</h1>
+            <ul>
+                <li class="active"><i class="bi bi-house-door spaceicon"></i>Dashboard</li>
+
+                <div onclick="menulayout()">
+                    <li id="liactive"><i class="bi bi-columns spaceicon"></i>Layouts</li>
+                </div>
+                <ul class="hiden" id="limenulayout">
+                    <li>without menu</li>
+                    <li>without navbar</li>
+                    <li>Container</li>
+                    <li>fluid</li>
+                    <li>blank</li>
+                </ul>
+
+                <li class="headermenu">PAGES</li>
+
+                <div onclick="showmenu()">
+                    <li><i class="bi bi-person spaceicon"></i>Acciunt Settings</li>
+                </div>
+                <ul id="hiden" class="hiden">
+                    <li class="ss">j</li>
+                    <li>j</li>
+                    <li>j</li>
+                </ul>
+                <li><i class="bi bi-unlock spaceicon"></i>Authentications</li>
+                <li><i class="bi bi-box spaceicon"></i>Misc</li>
+
+                <li class="headermenu">COMPONENTS</li>
+
+                <li><i class="bi bi-collection spaceicon"></i>Cards</li>
+                <li><i class="bi bi-archive spaceicon"></i>User interface</li>
+                <li><i class="bi bi-clipboard spaceicon"></i>Extended Ul</li>
+                <li><i class="bi bi-xbox spaceicon"></i>Boxicons</li>
+
+                <li class="headermenu">MISC</li>
+                <li><i class="bi bi-ticket-detailed spaceicon"></i>Form Elements</li>
+                <li><i class="bi bi-ticket-detailed spaceicon"></i>Form Layouts</li>
+                <li><i class="bi bi-table spaceicon"></i>Tables</li>
+
+
+                <li class="headermenu">MISC</li>
+
+                <li><i class="bi bi-chat-left-text spaceicon"></i>Support</li>
+                <li><i class="bi bi-file-earmark-text spaceicon"></i>Documentation</li>
+
+            </ul>
+        </div>
+        <div class="main">
+            <header>
+                <div class="search" >
+                    <button class="listmenu" ><i class="bi bi-list"></i></button>
+
+                    <label><i class="bi bi-search"></i></label>
+                    <input type="search" placeholder="Search..." />
+                </div>
+                <div class="profile">
+                     <a href="#" class="star"><i class="bi bi-star iconstar"></i>Star</a>
+                     <a href="#" class="numberstar">121</a>
+                </div>
+            </header>
+        </div>
+    </div>
+    <script>
+        let hidenmenu = document.getElementById('hiden');
+        let limenulayout = document.getElementById('limenulayout');
+        let liactive = document.getElementById('liactive');
+        let flaf = false;
+
+
+
+        function menulayout() {
+            if (flaf == true) {
+                limenulayout.style.display = 'block';
+                liactive.style.backgroundColor = '#F8F8F9';
+                flaf = false;
+            }
+            else {
+                limenulayout.style.display = 'none';
+                liactive.style.backgroundColor = '#fff';
+                flaf = true;
+            }
+
+        };
+
+
+        function showmenu() {
+            if (flaf == true) {
+                hidenmenu.style.display = 'block';
+                flaf = false;
+            }
+            else {
+                flaf = true;
+                hidenmenu.style.display = 'none';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
